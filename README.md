@@ -34,3 +34,6 @@ if Chrome crashes,
 2. Download the latest version chromedriver.exe here: https://chromedriver.chromium.org/downloads
 3. Then replace the chromedriver.exe file in the folder.
 
+## Any Extra Help!
+
+Join the Support Discord Server: https://discord.gg/a24Sp9bEXu 
