@@ -6,3 +6,4 @@ into scanning their Discord login QR Code, and gain access to their account. Use
 
 ### Usage
 First Step, Import This Project From GitHub In [REPLIT](https://replit.com)
+second Step, Type These Commands In Your Replit Console
