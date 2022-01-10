@@ -1,8 +1,14 @@
 # Discord-QR-Scam
 
 ### About
+Credit : 9P9
+I Just Modified His Tools
 A Python script that automatically generates a Nitro scam QR code and grabs the Discord token when scanned. This tool demonstrates how people can trick others
 into scanning their Discord login QR Code, and gain access to their account. Use for Educational Purposes only.
+
+### Tips
+
+[+] qrgen.py Is Better Than QR_Generator.py & qrg.py
 
 ### Features
 [+] You Can Run This In [REPLIT](https://replit.com)
