@@ -13,6 +13,8 @@ into scanning their Discord login QR Code, and gain access to their account. Use
 
 [+] You Just Need To Run qrg.py And Input Your Webhook Url
 
+[+] Run qrgen.py > Input Webhook Url > Qr Code Image Will Send Via Your Webhook (Qr Code Only Last For 2 Minites)
+
 ### Warning
 [•] QR Code Only Last For 2 Minuts, Make Sure You Send Fresh QR Code To Victim.
 
