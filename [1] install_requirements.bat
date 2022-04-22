@@ -1,4 +1,1 @@
-@echo off
-title [313] PIP Install Requirements
-pip install -r requirements.txt
-pause
+pip install beautifulsoup4 colorama lxml pillow requests selenium
