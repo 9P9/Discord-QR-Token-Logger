@@ -1,39 +1,27 @@
-# Discord-QR-Scam
-
-### About
-A Python script that automatically generates a Nitro scam QR code and grabs the Discord token when scanned. This tool demonstrates how people can trick others
-into scanning their Discord login QR Code, and gain access to their account. Use for Educational Purposes only.
+# QR Discord Token Grabber
+A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed; use for educational purposes only.
 
 ![img1](https://i.ibb.co/BL2Q0jz/Screenshot-527.png)
 
 ## Demonstration
+
 ![qr-code](https://user-images.githubusercontent.com/75003671/117522092-fd79ff80-afe3-11eb-938c-23dd68d5927c.gif)
 
 ## Usage
-1. If you dont have python installed, download python 3.7.6
-and make sure you click on the 'ADD TO PATH' option during
-the installation.
+1. This project requires [Python >= 3.7.6](https://python.org). When installing Python, make sure to check the *ADD TO PATH* checkbox.
 
-2. Install the required modules > ```pip install -r requirements.txt``` or double click `pip_install_requirements.bat` also make sure to edit "URL" variable within the program to add your webhook!
+2. Run the `[1] install_requirements.bat` file.
 
-3. Type ```python QR_Generator.py``` in cmd to run or double click `run_script.bat`
+3. Unzip the `browser.7z` file so that the browser folder is in the same directory as the `[2] run.bat` file.
 
-4. Wait for the `discord_gift.png` to be generated. Send the image to the victim and make them scan it.
+4. Run the `[2] run.bat` file.
 
-5. QR Code only lasts about 2 minutes. Make sure you send a fresh one to the victim and he is ready to scan.
+5. Input your discord webhook link (this link is used to post the authentication token to a channel). Note that, even if you do not input a webhook link, you will still receive the token when it is printed to the console, but note that you will lose this token once the program is closed!
 
-6. When the QR Code is scanned, you will automatically be logged in to their account and the script will grab the Discord token.
+6. Wait for `discord_gift.png` to be generated. Then, send the image to a victim for them to scan it. Note that the QR code is only valid for approximately two minutes after creation.
 
-## Troubleshoot
-Make sure your chromedriver.exe file is the same version as your current Chrome web browser version. To check your current Chrome version,
-paste `chrome://settings/help` in Google Chrome.
+7. When the QR code is scanned, you will be logged onto their account and receive their discord authentication token.
 
-if Chrome crashes,
+## Need extra help?
 
-1. Make sure your chromedriver.exe file is the same version as your Chrome web browser version
-2. Download the latest version chromedriver.exe here: https://chromedriver.chromium.org/downloads
-3. Then replace the chromedriver.exe file in the folder.
-
-## Any Extra Help!
-
-Join the Support Discord Server: https://discord.gg/a24Sp9bEXu 
+[Join the discord server for support!](https://discord.gg/a24Sp9bEXu)

