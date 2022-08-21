@@ -1,3 +1,6 @@
+# Updated Grabber Here: https://github.com/9P9/Website-Token-Grabber-2
+
+
 # QR Discord Token Grabber
 A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed; use for educational purposes only.
 
