@@ -80,9 +80,17 @@ After following all instructions, you can start the script 🥳.
 
 # 💡Contributing
 
-Your contributions are always welcome! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. 🎉
+Your contributions are always welcome! if you contribute we will show your account in the README file ! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. 🎉
 
-**Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://kcd.im/pull-request)
+## Contributors ❤
+
+<a href="https://github.com/9P9/Discord-QR-Token-Logger/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=9P9/Discord-QR-Token-Logger" />
+</a>
+<br>
+<br>
+
+> **Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://kcd.im/pull-request)
 
 # 📝License
 
