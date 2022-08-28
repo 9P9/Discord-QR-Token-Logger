@@ -27,10 +27,11 @@ A python script that generates a scam nitro QR code which can grab a victim's au
   - [With Discord features](#with-discord-features)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
-  - [Supported Platforms](#supported-platflorms)
+  - [Supported Platforms](#supported-platforms)
 - [Contributing](#contributing)
   - [Contributors](#contributors-)
 - [License](#license)
+- [Other Project](#others-projects)
 
 # 📈Usage
 
@@ -89,7 +90,7 @@ After following all instructions, you can start the script 🥳.
 - Windows 8 `supported but not tested`
 - Windows 7 `supported but not tested`
 
-# 💡Contributing
+# ✨Contributing
 
 Your contributions are always welcome! if you contribute we will show your account in the README file ! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. 🎉
 
@@ -106,3 +107,11 @@ Your contributions are always welcome! if you contribute we will show your accou
 # 📝License
 
 The GNU General Public License v3.0 (GPL-3.0) 2022 - [mouadessalim](https://github.com/mouadessalim) & [9P9](https://github.com/9P9). Please have a look at the [LICENSE](LICENSE) for more details.
+
+# 💡Others projects
+
+If you love this repository you may be interested in these projects:
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=mouadessalim&repo=CookedGrabber&show_owner=true)](https://github.com/mouadessalim/CookedGrabber)
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=9P9&repo=Website-Token-Grabber-2&show_owner=true)](https://github.com/9P9/Website-Token-Grabber-2)
