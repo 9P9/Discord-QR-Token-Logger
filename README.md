@@ -29,7 +29,7 @@ A python script that generates a scam nitro QR code which can grab a victim's au
   - [Dependencies](#dependencies)
   - [Supported Platforms](#supported-platflorms)
 - [Contributing](#contributing)
-  - [Contributors](#contributors)
+  - [Contributors](#contributors-)
 - [License](#license)
 
 # 📈Usage
