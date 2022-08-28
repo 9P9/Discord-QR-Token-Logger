@@ -27,7 +27,9 @@ A python script that generates a scam nitro QR code which can grab a victim's au
   - [With Discord features](#with-discord-features)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
+  - [Supported Platforms](#supported-platflorms)
 - [Contributing](#contributing)
+  - [Contributors](#contributors)
 - [License](#license)
 
 # 📈Usage
@@ -80,6 +82,12 @@ For installation, you may need some requirements, You must follow these steps to
 - Python module (launch **install_requirements.bat**)
 
 After following all instructions, you can start the script 🥳.
+
+## Supported Platforms
+- Windows 11 `supported but not tested`
+- Windows 10 (also known as win32, for x86, x86_64, and arm64 architectures) `supported and tested`
+- Windows 8 `supported but not tested`
+- Windows 7 `supported but not tested`
 
 # 💡Contributing
 
