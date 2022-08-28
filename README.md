@@ -10,11 +10,15 @@
 ![GitHub issues](https://img.shields.io/github/issues/9P9/Discord-QR-Token-Logger)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/9P9/Discord-QR-Token-Logger)
 
-A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed. **For Educational Purposes Only**.
+A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed.
 
 ![Capture d’écran 2022-08-27 172232](https://user-images.githubusercontent.com/38190847/187040712-92f4c796-c655-47a2-abb2-7f4519d1dab7.png)
 
 *If you're interested in knowing the powerlevel configuration to get this prompt, have a look at [this repo](https://github.com/billythegoat356/pystyle).*
+
+## Disclaimer
+- **For Educational Purposes Only**
+- We decline any responsability in case of misuse of this code.
 
 # Table of contents
 
@@ -67,8 +71,7 @@ With this method you are able to get much more target information like:
 
 # 🛠Installation
 
-For installation, you may need some dependencies,
-You may need to follow these steps to avoid all python interpreter errors.
+For installation, you may need some requirements, You must follow these steps to avoid all python interpreter errors.
 
 ## Dependencies
 
