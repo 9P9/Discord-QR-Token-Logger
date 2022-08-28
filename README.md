@@ -37,13 +37,13 @@ To use the script, you just need to launch it normally without updating any code
 
 Without discord features, you can only get target token, you must proceed as follows:
 
-![image](https://user-images.githubusercontent.com/38190847/187048296-dd4b9c75-7c4d-476c-8cba-9c53a809d610.png)
+<img src="https://user-images.githubusercontent.com/38190847/187074516-29a22055-96a0-40f9-9d79-8a69834ab039.png" width="500">
 
 ## With Discord features
 
 To use Discord features you will need to provide **webhook url** to prompt when requested:
 
-![image](https://user-images.githubusercontent.com/38190847/187048386-1abda0d0-afa9-4a0a-a351-4e55b34398e7.png)
+<img src="https://user-images.githubusercontent.com/38190847/187074586-d5c0a8f5-c96b-45bb-ac96-42550c2f1ae4.png" width="500">
 
 With this method you are able to get much more target information like:
 
