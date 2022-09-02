@@ -9,6 +9,8 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/9P9/Discord-QR-Token-Logger)
 ![GitHub issues](https://img.shields.io/github/issues/9P9/Discord-QR-Token-Logger)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/9P9/Discord-QR-Token-Logger)
+![Maintenance](https://img.shields.io/maintenance/yes/2022)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/9P9/Discord-QR-Token-Logger)
 
 A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed.
 
