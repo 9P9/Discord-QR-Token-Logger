@@ -6,7 +6,6 @@
 ![GitHub](https://img.shields.io/github/license/9P9/Discord-QR-Token-Logger)
 ![GitHub contributors](https://img.shields.io/github/contributors/9P9/Discord-QR-Token-Logger)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
-![GitHub repo size](https://img.shields.io/github/repo-size/9P9/Discord-QR-Token-Logger)
 ![GitHub issues](https://img.shields.io/github/issues/9P9/Discord-QR-Token-Logger)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/9P9/Discord-QR-Token-Logger)
 ![Maintenance](https://img.shields.io/maintenance/yes/2022)
