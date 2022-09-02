@@ -12,11 +12,21 @@
 
 A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed.
 
-![Capture d’écran 2022-08-27 172232](https://user-images.githubusercontent.com/38190847/187040712-92f4c796-c655-47a2-abb2-7f4519d1dab7.png)
-
 *If you're interested in knowing the powerlevel configuration to get this prompt, have a look at [this repo](https://github.com/billythegoat356/pystyle).*
 
-## Disclaimer
+![Capture d’écran 2022-08-27 172232](https://user-images.githubusercontent.com/38190847/187040712-92f4c796-c655-47a2-abb2-7f4519d1dab7.png)
+
+<p align="center">
+<i>Loved the tool? Please consider <strong>donating</strong> 💸 to help it improve!</i>
+</p>
+
+<p align="center">
+<a href='https://ko-fi.com/mouadessalim' target='_blank'><img height='23' width="100" src='https://cdn.ko-fi.com/cdn/kofi3.png?v=2' alt='Buy Coffee for mouadessalim' />
+</a>
+<a href="https://www.buymeacoffee.com/mouadessalim" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="23" width="100" style="border-radius:1px" />
+</p>
+
+## ❗Disclaimer
 - **For Educational Purposes Only**
 - We decline any responsability in case of misuse of this code.
 
@@ -29,7 +39,7 @@ A python script that generates a scam nitro QR code which can grab a victim's au
   - [Dependencies](#dependencies)
   - [Supported Platforms](#supported-platforms)
 - [Contributing](#contributing)
-  - [Contributors](#contributors-)
+  - [Authors](#authors-)
 - [License](#license)
 - [Other Project](#others-projects)
 
@@ -94,7 +104,7 @@ After following all instructions, you can start the script 🥳.
 
 Your contributions are always welcome! if you contribute we will show your account in the README file ! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. 🎉
 
-## Contributors ❤
+## Authors ❤
 
 <a href="https://github.com/9P9/Discord-QR-Token-Logger/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=9P9/Discord-QR-Token-Logger" />
