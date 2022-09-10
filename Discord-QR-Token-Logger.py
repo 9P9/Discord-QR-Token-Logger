@@ -1,4 +1,4 @@
-import base64, os, re, time, sys
+import base64, os, re, time, sys, ctypes, time
 from requests import get
 from bs4 import BeautifulSoup
 from PIL import Image
@@ -9,9 +9,7 @@ from pystyle import System, Center, Colorate, Colors, Box, Write
 from utilities import pystray_img, banner
 from pystray import Menu, MenuItem, Icon
 from io import BytesIO
-import ctypes
 from threading import Thread
-import time
 from tempfile import TemporaryDirectory, NamedTemporaryFile
 
 def generate_qr(path_1, path_2) -> None:
