@@ -128,4 +128,4 @@ If you love this repository you may be interested in these projects:
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=9P9&repo=Website-Token-Grabber-2&show_owner=true)](https://github.com/9P9/Website-Token-Grabber-2)
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=the-cult-of-integral&repo=discord-raidkit&show_owner=true)](https://github.com/9P9/Website-Token-Grabber-2)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=the-cult-of-integral&repo=discord-raidkit&show_owner=true)](https://github.com/the-cult-of-integral/discord-raidkit)
