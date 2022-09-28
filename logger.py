@@ -2,7 +2,7 @@ import logging
 from functools import wraps
 from typing import Any
 
-logging.basicConfig(filename='qrg.log', filemode='w', 
+logging.basicConfig(filename='qrg.log', filemode='w',
                     format="[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s")
 
 
@@ -27,7 +27,8 @@ def log_unknown_exceptions(log_lvl: int) -> Any:
                 elif log_lvl == logging.CRITICAL:
                     logging.critical(e)
                 else:
-                    raise ValueError('Invalid log level provided for log_unknown_exceptions decorator.')
+                    raise ValueError(
+                        'Invalid log level provided for log_unknown_exceptions decorator.')
                 return None
-        return wrapper 
+        return wrapper
     return decorate
