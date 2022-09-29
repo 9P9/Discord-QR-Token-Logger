@@ -104,7 +104,7 @@ After installing all dependencies, you can start the script 🥳.
 
 Your contributions are always welcome! If you contribute we will show your account in this README! 
 
-Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. 🎉
+_Please have a look at the [contribution guidelines](CONTRIBUTING.md) first._ 🎉
 
 ## Authors ❤
 
