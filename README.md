@@ -118,7 +118,9 @@ _Please have a look at the [contribution guidelines](CONTRIBUTING.md) first._ �
 
 # 📝 License
 
-The actual repository is _unlicensed_, it mean **all rights are reserved** and it is not Open Source. You cannot modify or redistribute this code without **explicit** permission from the copyright [holders](https://github.com/9P9/Discord-QR-Token-Logger/graphs/contributors). Violating this rule may lead our intervention according to [Github Terms of Service — User-Generated Content — Section D.3](https://github.com/github/docs/blob/e905a7d3ca27b2128abe62e4999816554fd0a680/content/site-policy/github-terms/github-terms-of-service.md?plain=1#L107-L108)
+The actual repository is _unlicensed_, it mean **all rights are reserved** and it is not Open Source. You cannot modify or redistribute this code without **explicit** permission from the copyright [holders](https://github.com/9P9/Discord-QR-Token-Logger/graphs/contributors). 
+
+_Violating this rule may lead our intervention according to the [Github Terms of Service — User-Generated Content — Section D.3](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#3-ownership-of-content-right-to-post-and-license-grants) using the [Content Removal Policies — DMCA Takedown Policy](https://docs.github.com/en/site-policy/content-removal-policies/dmca-takedown-policy#what-is-the-dmca)_
 
 # 💡 Other projects
 
