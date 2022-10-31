@@ -4,7 +4,9 @@ Discord QR Token Logger
 Generates a Discord Nitro bait image with a QR code that will prompt a user to login.
 If the user logs in, their authentication token will be displayed to the console.
 Optionally, the user's authentication token may also be sent to a Discord channel via a webhook.
-LICENSE: GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
+LICENSE
+The actual repository is unlicensed, it mean all rights are reserved. You cannot modify or redistribute this code without explicit permission from the copyright holders.
+Violating this rule may lead our intervention according to the Github Terms of Service — User-Generated Content — Section D.3 using the Content Removal Policies — DMCA Takedown Policy.
 CREDITS
 Lemon.-_-.#3714
 Luci (9P9)
