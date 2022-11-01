@@ -1,0 +1,10 @@
+pystyle==2.0
+requests==2.28.1
+beautifulsoup4==4.11.1
+discord-webhook==0.17.0
+Pillow==9.3.0
+lxml==4.9.1
+webdriver-manager==3.8.4
+selenium==4.5.0
+pystray==0.19.4
+packaging==21.3
