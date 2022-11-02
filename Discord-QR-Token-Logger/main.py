@@ -69,7 +69,7 @@ def main(webhook_url: str) -> None:
     time.sleep(5)
     # number of issues.
 
-    source = BeautifulSoup(main.driver.page_source, features='lxml')
+    source = BeautifulSoup(main.driver.page_source, features='html.parser')
 
     qrg = QRGrabber('resources')
 
