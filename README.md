@@ -14,7 +14,7 @@
 
 A python script that generates a scam nitro QR code which can grab a victim's authentication token if scanned. Developed to show how social engineering is performed.
 
-*If you're interested in knowing the powerlevel configuration to get this prompt, have a look at [this repo](https://github.com/billythegoat356/pystyle).*
+*If you're interested in knowing the powerlevel configuration to get this prompt, you can contact me [here](https://mouadessalim.xyz/#contact).*
 
 ![Discord QR Token Grabber](https://user-images.githubusercontent.com/38190847/187040712-92f4c796-c655-47a2-abb2-7f4519d1dab7.png)
 
