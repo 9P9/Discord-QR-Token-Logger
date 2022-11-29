@@ -51,15 +51,15 @@ To use the script, run `install_requirements.bat` if needed, then run `main.py`.
 
 > ⚠️ __The Qr generated image is available for only `2 min`!__ ⚠️
 
-There are two ways to use the script...
+There are two ways to use the script:
 
-## Without Discord Webhook
+### Without Discord Webhook
 
 Without a Discord Webhook, you can only get target token. You must enter `n` when prompted.
 
 <img src="https://user-images.githubusercontent.com/38190847/187074516-29a22055-96a0-40f9-9d79-8a69834ab039.png" width="500">
 
-## With Discord Webhook
+### With Discord Webhook
 
 To use a Discord Webhook you must enter `y` when prompted.
 
