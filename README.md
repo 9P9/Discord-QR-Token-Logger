@@ -46,7 +46,7 @@ A python script that generates a scam nitro QR code which can grab a victim's au
 
 # 📈 Usage
 
-To use the script, run `install_requirements.bat` if needed, then run `main.py`. The scam image will appear as `discord_gift.png` in the directory. 
+To use the script, run `pip install -r requirements.txt` if needed, then run `main.py`. The scam image will appear as `discord_gift.png` in the directory. 
 
 > ⚠️ __The Qr generated image is available for only `2 min`!__ ⚠️
 
