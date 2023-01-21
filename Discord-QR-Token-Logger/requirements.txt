@@ -17,6 +17,7 @@ PySocks==1.7.1
 pystray==0.19.4
 pystyle==2.9
 python-dotenv==0.21.0
+pywin32==305
 requests==2.28.2
 selenium==4.7.2
 six==1.16.0
