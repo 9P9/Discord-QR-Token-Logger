@@ -4,7 +4,6 @@
 ![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)
 ![author](https://svgshare.com/i/mg6.svg)
 
-![GitHub](https://img.shields.io/github/license/9P9/Discord-QR-Token-Logger)
 ![GitHub contributors](https://img.shields.io/github/contributors/9P9/Discord-QR-Token-Logger)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
 ![GitHub issues](https://img.shields.io/github/issues/9P9/Discord-QR-Token-Logger)
