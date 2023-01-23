@@ -93,7 +93,7 @@ For installation, there are a few requirements. You must follow these steps to a
 
 - Chrome: **be sure to have the latest version**.
 - Python 3.9+
-- Python Modules (launch `install_requirements.bat`)
+- Python Modules (launch `pip install -r requirements.txt`)
 
 After installing all dependencies, you can start the script 🥳.
 
