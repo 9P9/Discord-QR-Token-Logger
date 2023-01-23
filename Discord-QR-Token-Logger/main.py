@@ -193,7 +193,7 @@ if __name__ == "__main__":
             args=(
                 Write.Input("\n[*] Enter your webhook url -> ",
                     Colors.green_to_cyan,
-                    interval=0.01)
+                    interval=0.01), 
             ))
     elif (confir == NO) or (confir == NO.upper()):
         th_main = Thread(target=main, args=(None,))
