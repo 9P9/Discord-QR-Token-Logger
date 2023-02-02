@@ -30,7 +30,7 @@ from pystyle import Box, Center, Colorate, Colors, System, Write
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.chrome.service import Service
-from constants import BANNER, NO, PYSTRAY_IMG, YES, SLEEP_TIME
+from constants import BANNER, PYSTRAY_IMG, SLEEP_TIME
 from discord_token import QRGrabber, TokenInfo
 from exceptions import InvalidToken, QRCodeNotFound, WebhookSendFailure
 from queue import Queue
