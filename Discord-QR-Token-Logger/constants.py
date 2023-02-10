@@ -22,7 +22,3 @@ EMBED_COLOR = '88c800'
 
 PAYMENT_CARD = 'Card'
 PAYMENT_PAYPAL = 'PayPal'
-
-# Integer Constants
-
-SLEEP_TIME = 1
