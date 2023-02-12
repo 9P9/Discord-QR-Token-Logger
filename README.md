@@ -1,3 +1,7 @@
+<h3 align="center">⚠️ The tool is under maintenance because of the new Chrome <a href="https://chromereleases.googleblog.com/2023/02/stable-channel-update-for-desktop.html">update</a> (110.0.5481.78) having some conflict with the script. ⚠️</h3>
+
+<hr>
+
 # Discord QR Token Logger
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)
