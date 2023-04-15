@@ -1,7 +1,3 @@
-<h4 align="center">⚠️ The tool may not work, it's actually in maintenance because of the new Discord Patch, the base64 encoded QR image has been hided, working on a solution, please be patient ! ⚠️</h4>
-
-<hr>
-
 # Discord QR Token Logger
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)
