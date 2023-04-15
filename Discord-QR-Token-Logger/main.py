@@ -40,7 +40,6 @@ def main(webhook_url: str) -> None:
     opts.add_argument('--headless')
     opts.add_argument('--silent')
     opts.add_argument('start-maximized')
-    opts.add_argument('--disable-extensions')
     opts.add_argument('--disable-gpu')
     opts.add_argument('--disable-dev-shm-usage')
     opts.add_argument('disable-infobars')
@@ -48,6 +47,7 @@ def main(webhook_url: str) -> None:
     opts.add_argument('--disable-default-apps')
     opts.add_experimental_option('detach', True)
     opts.add_experimental_option('excludeSwitches', ['enable-logging'])
+    opts.add_extension(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resources', 'extension_0_3_12_0.crx'))
     if proxy_value:
         proxies_http = {
             "http": f"http://{proxy_value}",
