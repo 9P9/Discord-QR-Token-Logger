@@ -94,7 +94,7 @@ For installation, there are a few requirements. You must follow these steps to a
 - Chrome: **be sure to have the latest version**.
 - Python 3.9+
 - Python Modules (launch `pip install -r requirements.txt`)
-- GTK 3 Runtime [(Download here)](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases)
+- GTK 3 Runtime ([Download here](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases))
 
 After installing all dependencies, you can start the script 🥳.
 
