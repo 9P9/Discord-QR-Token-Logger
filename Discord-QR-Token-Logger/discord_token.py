@@ -1,5 +1,4 @@
 import os
-import re
 from discord_webhook import DiscordEmbed, DiscordWebhook
 from discord_webhook.webhook_exceptions import ColorNotInRangeException
 from PIL import Image
