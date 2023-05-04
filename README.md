@@ -131,5 +131,3 @@ _Violating this rule may lead our intervention according to the [Github Terms of
 If you love this repository you may be interested in these projects:
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=mouadessalim&repo=CookedGrabber&show_owner=true)](https://github.com/mouadessalim/CookedGrabber)
-
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=the-cult-of-integral&repo=discord-raidkit&show_owner=true)](https://github.com/the-cult-of-integral/discord-raidkit)
