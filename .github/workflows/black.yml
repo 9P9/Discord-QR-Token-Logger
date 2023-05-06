@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '**.py'
   pull_request:
     branches:
       - main
-    paths:
-      - '**.py'
 
 jobs:
   Check_With_Black:
