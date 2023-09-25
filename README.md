@@ -1,7 +1,5 @@
 # Discord QR Token Logger
 
-![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)
-![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)
 ![author](https://svgshare.com/i/mg6.svg)
 
 ![GitHub contributors](https://img.shields.io/github/contributors/9P9/Discord-QR-Token-Logger)
