@@ -1,3 +1,5 @@
+<h4>⚠️ This repository has been archived and is no longer maintained. ⚠️</h4>
+
 # Discord QR Token Logger
 
 [![forthebadge](https://raw.githubusercontent.com/9P9/Discord-QR-Token-Logger/f0df606d3e95043c7fbc67babc3ec6f2dec5922e/.github/made-by-mouadessalim.svg)](https://github.com/mouadessalim)
