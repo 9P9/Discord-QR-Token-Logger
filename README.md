@@ -1,6 +1,7 @@
 # Discord QR Token Logger
 
-![author](https://svgshare.com/i/mg6.svg)
+[![forthebadge](https://raw.githubusercontent.com/9P9/Discord-QR-Token-Logger/f0df606d3e95043c7fbc67babc3ec6f2dec5922e/.github/made-by-mouadessalim.svg)](https://github.com/mouadessalim)
+
 
 ![GitHub contributors](https://img.shields.io/github/contributors/9P9/Discord-QR-Token-Logger)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
